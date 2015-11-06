@@ -1,0 +1,6 @@
+framework module MPMessagePack {
+  umbrella header "Pods-Doo-MPMessagePack-umbrella.h"
+
+  export *
+  module * { export * }
+}

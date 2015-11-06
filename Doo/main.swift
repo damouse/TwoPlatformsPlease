@@ -7,6 +7,24 @@
 //
 
 import Foundation
+import Riffle
 
-print("Hello, World!")
+// Replace "damouse" with your own username!
+let app = RiffleAgent(domain: "xs.demo.damouse.exagainst")
 
+class ContainerAgent: RiffleAgent {
+    override func onJoin() {
+        print("Agent joined")
+        register("hello", sayHi)
+    }
+    
+    func sayHi(name: String) -> AnyObject {
+        print("\(name) says hello!")
+        return "Hi, \(name)!"
+    }
+}
+
+let container = ContainerAgent(name: "container", superdomain: app)
+container.join()
+
+NSRunLoop.currentRunLoop().run()
